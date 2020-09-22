@@ -47,7 +47,9 @@ function BuildCart() {
       console.log(er);
       return;
     }
-    console.log(totalPrice);
+    console.log(`Total Price is ${totalPrice}`);
+    console.log("checking out....");
+    this.empty();
   };
 
   this.empty = function () {
@@ -61,7 +63,7 @@ function BuildCart() {
     }
     items = [];
     totalPrice = 0;
-    console.log("All item are removed");
+    console.log("Done");
   };
 
   Object.defineProperties(this, {
