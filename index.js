@@ -2,18 +2,18 @@ function BuildCart() {
   let items = [];
   let totalPrice = 0;
 
-  this.add = function (id, name, price) {
+  this.add = function (i, nm, p) {
     try {
       if (items.length === 10) {
         throw new console.Error("cart is full");
       }
     } catch (er) {
-      console.log("cart is full you can't add more items");
+      console.log(er);
       return;
     }
 
     let obj = { id, name, price };
-    totalPrice += price;
+    totalPrice += p;
     items.push(obj);
   };
 
@@ -23,11 +23,18 @@ function BuildCart() {
         throw new Error("Cart is Empty");
       }
     } catch (er) {
-      console.log("cart is empty");
+      console.log("cart is Empty");
       return;
     }
-    items = items.filter((items) => items.id != id);
 
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].id === id) {
+        totalPrice -= items[i].price;
+        delete items[i];
+        console.log(`item of id ${id} is deleted`);
+        return;
+      }
+    }
     console.log(`item ${id} of id is not present`);
   };
 
@@ -37,10 +44,12 @@ function BuildCart() {
         throw new Error("Cart is Empty");
       }
     } catch (er) {
-      console.log(`cart is empty total price is ${totalPrice}`);
+      console.log("cart is Empty");
       return;
     }
-    console.log(totalPrice);
+    console.log(`Total price ${totalPrice}`);
+    console.log("checking out....");
+    this.empty();
   };
 
   this.empty = function () {
@@ -49,11 +58,11 @@ function BuildCart() {
         throw new Error("Cart is Empty");
       }
     } catch (er) {
-      console.log("cart is empty");
+      console.log(er);
       return;
     }
     items = [];
     totalPrice = 0;
-    console.log("All item are removed");
+    console.log("Done");
   };
 }
