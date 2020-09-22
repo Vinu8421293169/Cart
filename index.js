@@ -8,7 +8,7 @@ function BuildCart() {
         throw new console.Error("cart is full");
       }
     } catch (er) {
-      console.log(er);
+      console.log("cart is full you can't add more items");
       return;
     }
 
@@ -23,18 +23,11 @@ function BuildCart() {
         throw new Error("Cart is Empty");
       }
     } catch (er) {
-      console.log(er);
+      console.log("cart is empty");
       return;
     }
+    items = items.filter((items) => items.id != id);
 
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === id) {
-        totalPrice -= items[i].price;
-        delete items[i];
-        console.log(`item of id ${id} is deleted`);
-        return;
-      }
-    }
     console.log(`item ${id} of id is not present`);
   };
 
@@ -44,7 +37,7 @@ function BuildCart() {
         throw new Error("Cart is Empty");
       }
     } catch (er) {
-      console.log(er);
+      console.log(`cart is empty total price is ${totalPrice}`);
       return;
     }
     console.log(totalPrice);
@@ -56,7 +49,7 @@ function BuildCart() {
         throw new Error("Cart is Empty");
       }
     } catch (er) {
-      console.log(er);
+      console.log("cart is empty");
       return;
     }
     items = [];
