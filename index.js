@@ -68,14 +68,12 @@ function BuildCart() {
 
   Object.defineProperties(this, {
     items: {
-      writable: false,
       configurable: false,
       get: function () {
         return items;
       }
     },
     totalPrice: {
-      writable: false,
       configurable: false,
       get: function () {
         return totalPrice;
