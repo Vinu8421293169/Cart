@@ -2,7 +2,7 @@ function BuildCart() {
   let items = [];
   let totalPrice = 0;
 
-  this.add = function (i, nm, p) {
+  this.add = function (id, name, price) {
     try {
       if (items.length === 10) {
         throw new console.Error("cart is full");
@@ -13,7 +13,7 @@ function BuildCart() {
     }
 
     let obj = { id, name, price };
-    totalPrice += p;
+    totalPrice += price;
     items.push(obj);
   };
 
@@ -23,7 +23,7 @@ function BuildCart() {
         throw new Error("Cart is Empty");
       }
     } catch (er) {
-      console.log("cart is Empty");
+      console.log("cart is empty");
       return;
     }
 
@@ -44,12 +44,10 @@ function BuildCart() {
         throw new Error("Cart is Empty");
       }
     } catch (er) {
-      console.log("cart is Empty");
+      console.log(er);
       return;
     }
-    console.log(`Total price ${totalPrice}`);
-    console.log("checking out....");
-    this.empty();
+    console.log(totalPrice);
   };
 
   this.empty = function () {
@@ -58,12 +56,12 @@ function BuildCart() {
         throw new Error("Cart is Empty");
       }
     } catch (er) {
-      console.log("Cart is empty");
+      console.log(er);
       return;
     }
     items = [];
     totalPrice = 0;
-    console.log("Done");
+    console.log("All item are removed");
   };
 
   Object.defineProperties(this, {
