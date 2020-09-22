@@ -2,7 +2,7 @@ function BuildCart() {
   let items = [];
   let totalPrice = 0;
 
-  this.add = function (i, nm, p) {
+  this.add = function (id, name, price) {
     try {
       if (items.length === 10) {
         throw new console.Error("cart is full");
@@ -12,11 +12,8 @@ function BuildCart() {
       return;
     }
 
-    let obj = {};
-    obj.id = i;
-    obj.name = nm;
-    obj.price = p;
-    totalPrice += p;
+    let obj = { id, name, price };
+    totalPrice += price;
     items.push(obj);
   };
 
