@@ -58,7 +58,7 @@ function BuildCart() {
         throw new Error("Cart is Empty");
       }
     } catch (er) {
-      console.log(er);
+      console.log("Cart is empty");
       return;
     }
     items = [];
